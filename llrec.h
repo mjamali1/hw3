@@ -80,9 +80,37 @@ Node* llfilter(Node* head, Comp pred);
 template <typename Comp>
 Node* llfilter(Node* head, Comp pred)
 {
-    //*********************************************
-    // Provide your implementation below
-    //*********************************************
+  //*********************************************
+  // Provide your implementation below
+  //*********************************************
+
+  // check bool
+  // iterate through list, removing nodes that match the condition
+
+  
+  // base case
+  if (head == nullptr) {return head;}
+  
+  //recursive case
+  else {
+    
+    Node* tmp = llfilter(head->next, pred);
+
+    // if it matches the condition
+    if (pred(head->val)){
+      delete head;
+      head = nullptr;
+      return tmp;
+
+    }
+    // if it doesnt match the condition, do nothing
+    else {
+      head->next = tmp;
+      return head;
+    }
+
+    // return head;
+  }
 
 
 }
